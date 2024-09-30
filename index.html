@@ -20,7 +20,7 @@
             <h3>Widget 01</h3>
             <div class="notepad">
                 <textarea id="note-area" name="message" rows="20" cols="40"></textarea>
-                <p><button id="saveNoteBtn">Submit </button></p>
+                <p><button id="saveNoteBtn">Submit</button></p>
             </div>
            </div>
 
@@ -47,6 +47,17 @@
     if (mm<10) mm='0'+mm
     $("#date").html(mm + sp + dd + sp + yyyy)
     
+    $("#saveNoteBtn").click(function(){
+     var currentNotes = $("#note-area").val();
+    localStorage.setItem("notes", currentNotes);
+    });
+    try {
+     var loadNotes = localStorage.getItem("notes");
+    }
+    catch(err) {
+    var loadNotes = "Enter your notes here and click 'Save'";
+    }
+    $("#note-area").val(loadNotes);
 
 </script>
 </html>
